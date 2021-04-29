@@ -1,0 +1,22 @@
+{
+  "name": "user_system_management_asab",
+  "version": "1.0.0",
+  "description": "System Management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArslanRama/User_System_Management_ASAB.git"
+  },
+  "author": "ASAB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArslanRama/User_System_Management_ASAB/issues"
+  },
+  "homepage": "https://github.com/ArslanRama/User_System_Management_ASAB#readme",
+  "dependencies": {
+    "node": "^16.0.0"
+  }
+}
