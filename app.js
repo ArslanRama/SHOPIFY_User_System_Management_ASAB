@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const PORT= 8080;
 
 
 const indexRouter = require('./routes/indexRouter')
@@ -13,6 +14,6 @@ app.set('view engine', 'hbs');
 app.use('/', indexRouter);
 
 //! Listen app with the port
-app.listen(8080, ()=>{
-    console.log('listening at localhost:')
+app.listen(PORT, ()=>{
+    console.log(`Server is runnin at http://localhost:${PORT}`);
 })
