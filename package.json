@@ -1,10 +1,10 @@
 {
   "name": "user_system_management_asab",
   "version": "1.0.0",
-  "description": "System Management",
-  "main": "index.js",
+  "description": "User_Manegment_System",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/ArslanRama/User_System_Management_ASAB#readme",
   "dependencies": {
-    "node": "^16.0.0"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "hbs": "^4.1.2",
+    "mongoose": "^5.12.6",
+    "nodemon": "^2.0.7"
   }
 }
