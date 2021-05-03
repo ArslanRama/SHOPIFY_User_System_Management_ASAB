@@ -1,11 +1,11 @@
-<h1>User Page {{userQuery.name}}</h1>
+<h1>User Account {{userQuery.name}}</h1>
 
 {{#if userQuery.deleted}}
  <div class='alert alert-warning text-center  mt-3 mb-3' role='alert'>
     <h4 class="font-weight-bolder m-0">{{userQuery.deleteMessage}}</h4>
   </div>
 {{/if}}
-<h2>Update Products:</h2>
+
 <form action="/login/user" method="POST" class="form mb-4">
     <label>Title</label>
     <input type="text" class="form-control" name="title">
@@ -21,19 +21,17 @@
     </button>
 </form>
 
-<h2>My Daily Products</h2>
+<h2>Added Products</h2>
 {{#if product}}
-<div class="d-flex justify-content-start px-5 mx-auto my-4 mr-2">
+<div>
     {{#each product}}
     <div class="card mr-2" >
         <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">
-                Price : {{price}} $
-            </p>
+            <p class="card-text"> Price : {{price}} € </p>
             <h5 class="card-title"> Discount:{{discount}}%</h5>
-            <a href="/login/user/update/{{_id}}" class="btn btn-primary">Update</a>
-            <a href="/login/user/delete/{{_id}}" class="btn btn-warning">Delete</a>
+            <a class="btn btn-warning" href="/login/user/update/{{_id}}" >Update</a>
+            <a class="btn btn-danger" href="/login/user/delete/{{_id}}" >Delete</a>
         </div>
         {{/each}}
     </div>
