@@ -1,34 +1,47 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const PORT= 8080;
+require("dotenv").config();
+const mongoose = require("mongoose");
 
-// MongoDB connection using mongoose module
-const DB_LINK = 'mongodb+srv://admin:admin@cluster0.fcrdg.mongodb.net/firstDB'
-const mongoose = require('mongoose')
-mongoose.connect(DB_LINK, {
-    useUnifiedTopology : true,
+const PORT = process.env.PORT || 8080;
+
+
+//! settings
+app.use(express.static(__dirname + "/public"));
+app.set("view engine", "hbs");
+app.use(express.urlencoded({ extended: false }));
+
+//! database name and url
+const DB_NAME = process.env.DB_NAME
+const DB_URL = process.env.MongoDB_Link+DB_NAME
+mongoose.connect(DB_URL, {
+    useUnifiedTopology: true,
     useNewUrlParser: true
 })
-.then(()=> console.log('MongoDB is succesfully connected '))
-.catch(()=> console.log('Database connection failed '))
+.then(()=> console.log('MongoDB database is successfully connected'))
+.catch(()=> console.log('Database connection failed!'))
 
 
-app.use(express.json()) 
+
+//! Adding models
+const User = require("./models/UserSchema");
+const Product = require("./models/ProductSchema");
+
+//! Routes
+const indexRouter = require("./routes/indexRouter");
+const signUpRouter = require("./routes/signUpRouter");
+const loginRouter = require("./routes/loginRouter");
+
+//! Home
+app.use("/", indexRouter);
+//! Register
+app.use("/register", signUpRouter);
+//! Login
+app.use("/login", loginRouter);
 
 
-const indexRouter = require('./routes/indexRouter')
+//! Listen
+app.listen(PORT, () => {
+  console.log("Server is running at http://localhost:" + PORT);
+});
 
-
-app.use(express.static(__dirname + '/public'))
-app.set('view engine', 'hbs');
-
-app.use(express.urlencoded({extended: false }))
-
-//! Routings
-app.use('/', indexRouter);
-
-
-//! Listen app with the port
-app.listen(PORT, ()=>{
-    console.log(`Server is runnin at http://localhost:${PORT}`);
-})
