@@ -31,11 +31,11 @@ const Product = require("./models/ProductSchema");
 const indexRouter = require("./routes/indexRouter");
 const signUpRouter = require("./routes/signUpRouter");
 const loginRouter = require("./routes/loginRouter");
-//? Home
+//! Home
 app.use("/", indexRouter);
-//? Register
+//! Register
 app.use("/register", signUpRouter);
-//? Login
+//! Login
 app.use("/login", loginRouter);
 
 
