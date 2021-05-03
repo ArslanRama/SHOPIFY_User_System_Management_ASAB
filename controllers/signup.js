@@ -1,9 +1,9 @@
-const url = require("url");
-const signUpForm = (req, res) => {
-  res.render("signUpForm");
+
+const signup = (req, res) => {
+  res.render("signup");
 };
 const User = require("../models/UserSchema");
-const signUpPost = (req, res) => {
+const signupPost = (req, res) => {
   const newUser = new User(req.body);
   console.log("New user created:", newUser);
   newUser.save(() => {
@@ -11,4 +11,4 @@ const signUpPost = (req, res) => {
   });
 };
 
-module.exports = { signUpForm, signUpPost };
+module.exports = { signup, signupPost };

@@ -31,12 +31,13 @@ mongoose.connect(DB_URL, {
 
 //! Routes
 const indexRouter = require("./routes/indexRouter");
-const signUpRouter = require("./routes/signUpRouter");
+const signupRouter = require("./routes/signupRouter");
 const loginRouter = require("./routes/loginRouter");
+
 //! Home
 app.use("/", indexRouter);
 //! Register
-app.use("/register", signUpRouter);
+app.use("/register", signupRouter);
 //! Login
 app.use("/login", loginRouter);
 

@@ -6,7 +6,7 @@ const loginForm = (req, res) => {
   const messages = req.query;
   res.render("login", { messages });
 };
-const loginWithUser = (req, res) => {
+const loginUser = (req, res) => {
   User.findOne(
     { email: req.body.email, password: req.body.password },
     (err, user) => {
@@ -15,8 +15,8 @@ const loginWithUser = (req, res) => {
           url.format({
             pathname: "/login",
             query: {
-              failMessage: "E-mail or Password is wrong, please check it!",
-              falseEntered: true,
+              errorMessage: "E-mail or Password is wrong, please check it!",
+              falseEntry: true,
             },
           })
         );
@@ -43,7 +43,7 @@ const loginWithUser = (req, res) => {
 };
 
 //! ADMIN
-const adminLoggedIn = (req, res) => {
+const loginAdmin = (req, res) => {
   const userQuery = req.query;
   Product.find((err, product) => {
     User.find((err, user) => {
@@ -65,11 +65,11 @@ const createNewUser = (req, res) => {
 };
 
 //  Update User
-const updateUser1 = async (req, res) => {
+const updateUser = async (req, res) => {
   const update = await User.findById(req.params.id);
   res.render("userUpdate", { update });
 };
-// updating user
+// Updated User
 const updatedUser = async (req, res) => {
   const { name, email, password, country, address, zip, salary, role } = req.body;
   await User.findByIdAndUpdate(req.params.id, {
@@ -103,7 +103,7 @@ const deleteUser = (req, res) => {
 };
 
 //! USER
-const loginUser = (req, res) => {
+const loginUserAccount = (req, res) => {
   const userQuery = req.query;
   Product.find((err, product) => {
     User.find((err, user) => {
@@ -112,7 +112,7 @@ const loginUser = (req, res) => {
   });
 };
 
-// User Add Product
+// Add Product
 const addProduct = (req, res) => {
   const newProduct = new Product(req.body);
   newProduct.save().then(() => {
@@ -120,12 +120,12 @@ const addProduct = (req, res) => {
   });
 };
 
-// User Update Product
-const updateProduct1 = async (req, res) => {
+// Update Product
+const updateProduct = async (req, res) => {
   const update = await Product.findById(req.params.id);
   res.render("productUpdate", { update });
 };
-// updating product
+// Updated Product
 const updatedProduct = async (req, res) => {
   const { title, price, discount, quantity } = req.body;
   await Product.findByIdAndUpdate(req.params.id, {
@@ -157,15 +157,15 @@ const deleteProduct = (req, res) => {
 
 module.exports = {
   loginForm,
-  loginWithUser,
-  adminLoggedIn,
+  loginUser,
+  loginAdmin,
   createNewUser,
-  updateUser1,
+  updateUser,
   updatedUser,
   deleteUser,
-  loginUser,
+  loginUserAccount,
   addProduct,
-  updateProduct1,
+  updateProduct,
   updatedProduct,
   deleteProduct,
 };
