@@ -31,7 +31,6 @@ const Product = require("./models/ProductSchema");
 const indexRouter = require("./routes/indexRouter");
 const signUpRouter = require("./routes/signUpRouter");
 const loginRouter = require("./routes/loginRouter");
-
 //! Home
 app.use("/", indexRouter);
 //! Register
