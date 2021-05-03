@@ -1,5 +1,4 @@
-
-
+<div class="login-form-container border p-5">
 {{#if messages.falseEntered}}
   <div class='alert alert-warning text-center  mt-3 mb-3' role='alert'>
     <h4 class="font-weight-bolder m-0">{{messages.failMessage}}</h4>
@@ -8,51 +7,26 @@
 
 
   <form id='signup' action='/login' method='POST'>
-    <h1>
-      Log In
-    </h1>
-    <p>
-      Please to enter your credential to access the product catalogue
-    </p>
-    <hr />
-    <label for='E-mail'>
-      <b>
-        E-Mail
-      </b>
-    </label>
-    <input class='input' type='text' name='email' required />
+    <h1 class="text-center py-5">Log In </h1>
+      <p>Please to enter your credential to access the product catalogue</p>
+   
+    <label for='E-mail'><b> E-Mail</b> </label>
+    <input type='text' name='email' placeholder="Enter your email" required />
 
-    <label for='psswrd'>
-      <b>
-        Password
-      </b>
-    </label>
-    <input 
-    class="input"
-      type='password'
-      name='password'
-      required
-    />
+    <label for='psswrd'><b>Password </b></label>
+    <input type='password' name='password' placeholder="Enter your password" required />
     
-    <button class='buttons' type='submit'>
-      Submit
-    </button>
-    <a href='/passwordRecovery' class='buttons-submit' type='submit'>
-      Forgot Password?
-    </a>
+    <button class='btn btn-primary my-4' type='submit'> Submit </button>
+    <a href='/passwordRecovery' class='btn text-danger' type='submit'> Forgot Password? </a>
     
-     <a href='/register' class='buttons-submit' type='submit'>
-      Not Register yet!
-    </a>
+     <a href='/register' class='btn text-success' type='submit'> Not Register yet! </a>
 
-    
-    {{!-- Terms & agreements --}}
                 <div class="col-md-12 my-4">
                     <div class="form-group">
                         <div class="w-100">
                                
-                            <label class="checkbox-wrap checkbox-primary w-100">
-                                I agree all statements in terms of service
+                           <label class="checkbox-wrap checkbox-primary w-100">
+                               I agree all statements in terms of service
                                <input type="checkbox" unchecked>
                                 <span class="checkmark">
                                     </span>
@@ -61,3 +35,5 @@
                     </div>
                 </div>
   </form>
+
+  </div>

@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-things {
+position: relative;
+}
+
+
+.header {
+  height: 100vh;
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(56, 56, 56, 0.9),
+      rgba(87, 86, 86, 0.9)
+    ),
+    url(../images/homepage.jpeg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #fff;
+}
+.home-container {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-form-container {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  input[type='text'], [type='password'], [type='email'] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: block;
+  }
