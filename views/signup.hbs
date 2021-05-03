@@ -1,0 +1,59 @@
+<main class="container">
+  <section class="form-wrap">
+    <header>
+      <h1>Sign Up</h1>
+      {{#if userData}}
+      <div class="alert alert-danger" role="alert">
+        {{userData.msg}} </div>
+      {{/if}}
+    </header>
+
+    <form action="/register" method="POST">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" placeholder="Enter your Name ..." autofocus />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Enter your Email" />
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Enter a Password" />
+      </div>
+      <div class="form-group">
+        <label for="password1">Confirm Password</label>
+        <input type="password" name="password1" id="password" placeholder="Enter a Password" required />
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" name="country" placeholder="Country ...." />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" name="address" placeholder="street and house-number" />
+      </div>
+
+      <div class="form-group">
+        <label for="salary">Salary</label>
+        <input type="text" name="salary" placeholder="How much do you earn monthley .." />
+      </div>
+
+      <button type="submit">Submit</button>
+
+      <p class="bottom-text">
+        By Clicking the Sign Up button you agree to our
+        <a href="#">Terms & conditons</a> and
+        <a href="#">Privacy Policy</a>
+      </p>
+
+    </form>
+  </section>
+  <footer>
+    <p>Already have an account? <a href="#">Login Here</a></p>
+  </footer>
+</main>
