@@ -22,11 +22,6 @@ mongoose.connect(DB_URL, {
 .catch(()=> console.log('Database connection failed!'))
 
 
-
-//! Adding models
-const User = require("./models/UserSchema");
-const Product = require("./models/ProductSchema");
-
 //! Routes
 const indexRouter = require("./routes/indexRouter");
 const signUpRouter = require("./routes/signUpRouter");
