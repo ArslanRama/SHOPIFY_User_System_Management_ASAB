@@ -35,6 +35,13 @@ position: relative;
     position: absolute;
     transform: translate(-50%, -50%);
   }
+  
+  .signup-form-container {
+    left: 50%;
+    top: 65%;
+    position: absolute;
+    transform: translate(-50%, -50%);    
+  }
 
   input[type='text'], [type='password'], [type='email'] {
     width: 100%;
@@ -43,3 +50,5 @@ position: relative;
     box-sizing: border-box;
     display: block;
   }
+
+ 
