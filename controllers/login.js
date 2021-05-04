@@ -64,12 +64,12 @@ const createNewUser = (req, res) => {
   });
 };
 
-//  Update User
+//  Update User with findById
 const updateUser = async (req, res) => {
   const update = await User.findById(req.params.id);
   res.render("userUpdate", { update });
 };
-// Updated User
+// Updated User with findByIdAndUpdate
 const updatedUser = async (req, res) => {
   const { name, email, password, country, address, zip, salary, role } = req.body;
   await User.findByIdAndUpdate(req.params.id, {
@@ -85,7 +85,7 @@ const updatedUser = async (req, res) => {
   res.redirect("/login/admin");
 };
 
-// Delete User 
+// Delete User with findByIdAndDelete
 const deleteUser = (req, res) => {
   const deleteUserId = req.params.id;
   User.findByIdAndDelete(deleteUserId, (err, doc) => {
@@ -120,12 +120,12 @@ const addProduct = (req, res) => {
   });
 };
 
-// Update Product
+// Update Product with findById
 const updateProduct = async (req, res) => {
   const update = await Product.findById(req.params.id);
   res.render("productUpdate", { update });
 };
-// Updated Product
+// Updated Product with findByIdAndUpdate
 const updatedProduct = async (req, res) => {
   const { title, price, discount, quantity } = req.body;
   await Product.findByIdAndUpdate(req.params.id, {
@@ -138,7 +138,7 @@ const updatedProduct = async (req, res) => {
   res.redirect("/login/user");
 };
 
-//  User Delete Product
+//  User Delete Product with findByIdAndDelete
 const deleteProduct = (req, res) => {
   const deleteProductId = req.params.id;
   Product.findByIdAndDelete(deleteProductId, (err, doc) => {
