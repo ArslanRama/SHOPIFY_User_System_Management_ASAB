@@ -1,7 +1,7 @@
 /* const url = require("url");  */
 const bcrypt = require('bcrypt')
 const signUpForm = (req, res) => {
-  res.render("signUpForm");
+  res.render("signup");
 };
 const User = require("../models/UserSchema");
 const signUpPost = async(req, res) => {
