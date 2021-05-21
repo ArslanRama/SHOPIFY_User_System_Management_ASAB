@@ -1,46 +1,99 @@
 const User = require("../models/UserSchema");
 const Product = require("../models/ProductSchema");
 const url = require("url");
+const bcrypt = require('bcrypt')
 
 const loginForm = (req, res) => {
   const messages = req.query;
   res.render("login", { messages });
 };
-const loginUser = (req, res) => {
-  User.findOne(
-    { email: req.body.email, password: req.body.password },
-    (err, user) => {
-      if (user == null) {
-        res.redirect(
-          url.format({
-            pathname: "/login",
-            query: {
-              errorMessage: "E-mail or Password is wrong, please check it!",
-              falseEntry: true,
-            },
-          })
-        );
-      } else if (!Object.keys(user) == 0) {
-        if (user.role == "administrator") {
-          res.redirect(
-            url.format({
-              pathname: "/login/admin",
-              query: { userName: user.name },
-            })
-          );
-        } else {
-          console.log(user.name);
-          res.redirect(
-            url.format({
-              pathname: "/login/user",
-              query: { userName: user.name },
-            })
-          );
-        }
-      }
-    }
-  );
-};
+
+const loginUser = async(req, res) => {
+  const { email, password} = req.body ;
+  let user = await User.findOne({ email })
+  if(!user){
+   return res.redirect(
+                url.format({
+                  pathname: "/login",
+                  query: {
+                    errorMessage: "user not found !!",
+                    falseEntry: true,
+                  },
+                })
+              );
+  }
+  const isMatch = await bcrypt.compare(password , user.password) // boolean value 
+  if(!isMatch ){
+    return res.redirect(
+      url.format({
+        pathname: "/login",
+        query: {
+          errorMessage: "password does not match!! ",
+          falseEntry: true,
+        },
+      })
+    );
+
+  }
+  // password is correct match
+  if (user.role == "Administrator") {
+       return    res.redirect(
+                url.format({
+                  pathname: "/login/admin",
+                  query: { userName: user.name },
+                })
+              );
+  }
+  else {
+    return    res.redirect(
+      url.format({
+        pathname: "/login/user",
+        query: { userName: user.name },
+      })
+    );
+  }
+
+
+
+}
+// const loginUser = (req, res) => {
+//   console.log(req.body)
+//   User.findOne(
+//     { email: req.body.email, password: req.body.password },
+//     (err, user) => {
+//       if (user == null) {
+//         res.redirect(
+//           url.format({
+//             pathname: "/login",
+//             query: {
+//               errorMessage: "E-mail or Password is wrong, please check it!",
+//               falseEntry: true,
+//             },
+//           })
+//         );
+//       } 
+//       else if (!Object.keys(user) == 0) {  
+              
+//         if (user.role == "administrator") {
+//           res.redirect(
+//             url.format({
+//               pathname: "/login/admin",
+//               query: { userName: user.name },
+//             })
+//           );
+//         } else {
+//           console.log(user.name);
+//           res.redirect(
+//             url.format({
+//               pathname: "/login/user",
+//               query: { userName: user.name },
+//             })
+//           );
+//         }
+//       }
+//     }
+//   );
+// };
 
 //! ADMIN
 const loginAdmin = (req, res) => {
